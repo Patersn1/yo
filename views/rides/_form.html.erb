@@ -1,0 +1,61 @@
+<%# # Project name: Servd Rideshare
+# Description: Users will be able to either offer their car for a ride or sign up for an open seat in a ride being 
+#              offered through this feature. Drivers can input which event they are driving too and how many seats 
+#              they have available while riders can reuqest a specific car to ride in. Drivers also have the ability 
+#              to approve or deny anyone a ride and can updtae who is specifally riding in their car. 
+# Filename: _form.html.erb
+# Description: This is the form users will have access to when creating a new ride or when signing up to be driven.
+# Last modified on: Nov. 10, 2021 %>
+
+<%= form_with(model: ride, local: true) do |form| %>
+  <% if ride.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ride.errors.count, "error") %> prohibited this ride from being saved:</h2>
+
+      <ul>
+        <% ride.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%# FUNCTIONALITY: No major functionality changes from default form.html.erb page genrated in rails, 
+                     removed textbox to edit the driver name attribute.  %>
+
+  <%# DESIGN DECISION: Removed driver name field in order to prevent someone from signing up someone else as a driver %>
+
+  <div class="field" style="text-align:center">
+    <%= form.label :opportuniy_id %>
+    <%= form.text_field :opportuniy_id %>
+  </div>
+
+  <div class="field" style="text-align:center">
+    <%= form.label :total_seats %>
+    <%= form.number_field :total_seats %>
+  </div>
+
+  <div class="field" style="text-align:center">
+    <%= form.label :rider1 %>
+    <%= form.text_field :rider1 %>
+  </div>
+
+  <div class="field" style="text-align:center">
+    <%= form.label :rider2 %>
+    <%= form.text_field :rider2 %>
+  </div>
+
+   <div class="field" style="text-align:center">
+    <%= form.label :rider3 %>
+    <%= form.text_field :rider3 %>
+  </div>
+
+   <div class="field" style="text-align:center">
+    <%= form.label :rider4 %>
+    <%= form.text_field :rider4 %>
+  </div>
+
+  <div class="actions" style="text-align:center">
+    <%= form.submit %>
+  </div>
+<% end %>

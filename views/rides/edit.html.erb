@@ -1,0 +1,19 @@
+<%# # Project name: Servd Rideshare
+# Description: Users will be able to either offer their car for a ride or sign up for an open seat in a ride being 
+#              offered through this feature. Drivers can input which event they are driving too and how many seats 
+#              they have available while riders can reuqest a specific car to ride in. Drivers also have the ability 
+#              to approve or deny anyone a ride and can updtae who is specifally riding in their car. 
+# Filename: edit.html.erb
+# Description: This page is where users will be brought to when requesting a ride. Will use the edit method in the controller and assign them
+#              the first open seat within the car they selected. They will not be added and get an error message if the car is full or if 
+#              they have already been added to the car. 
+# Last modified on: Nov. 10, 2021 %>
+
+<h1 style="text-align:center"> Request Ride</h1>
+<p style="text-align:center"> <strong>Directions: </strong>By clicking update, you will be automatically added to the car you chose. 
+<br>Please do not remove anyone else who has signed up for a ride. 
+<br>The driver has the power to remove you if they do not feel comfortable driving you.</p>
+<%= render 'form', ride: @ride %>
+
+<p style="text-align:center"><%= link_to 'Show', @ride %> |
+<%= link_to 'Back', rides_path %> </p>

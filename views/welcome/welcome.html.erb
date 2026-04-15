@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>CELR Volunteering</title>
+    <meta name="viewport" content="initial-scale=1">
+    <!-- CELR Navbar CSS -->
+    <link href="application.css" media="screen" rel="stylesheet" type="text/css"/>
+    <!-- CELR Welcome Page CSS -->
+    <link href="welcome.css" media="screen" rel="stylesheet" type="text/css"/>
+    <!-- Google Fonts: OpenSans -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100" rel="stylesheet">
+    <!-- Font Awesome Images -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <div class="background"></div>
+      <h1 class="giant">SERVD</h1>
+      <h4>Students of Ewing Region Volunteer Database</h4>
+      <ul class="menu">
+        <% unless user_signed_in? %>
+          <%= link_to new_user_session_path, class: "login-buttons button1" do %>
+            <div class="content">Login</div>
+          <% end %>
+          <%= link_to new_user_registration_path, class: "login-buttons button2" do %>
+            <div class="content">Create an Account</div>
+          <% end %>
+        <% else %>
+          <%= link_to opportunities_path, class: "login-buttons button1" do %>
+            <div class="content">See Local Events</div>
+          <% end %>
+        <% end %>
+      </ul>
+      <div class="container2">
+        <div>
+          <p>
+            SERVD is a web application that helps TCNJ students interact with their surrounding community. SERVD provides a
+            list of volunteer events approved by the Center for Community Engaged Learning (CELR). Create an account,
+            bookmark the events you are interested in, and get started!
+          </p>
+        </div>
+      </div>
+      <div id="foots"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,41 @@
+<div id="main_content">
+  <h1>Volunteer List</h1>
+
+  <% if @show_management_options %>
+    <p>
+      <%= link_to "Send Email to All", @email_link, class: "button email_button" %>
+      <%= link_to "Back", opportunity_path(@opportunity), class: "button" %>
+    </p>
+
+    <br>
+
+    <% if @volunteers.size > 0 %>
+      <table>
+        <thead>
+        <table>
+          <thead>
+          <tr>
+              <th>Email</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @volunteers.each do |volunteer| %>
+            <tr>
+              <td><%= volunteer.user.email %></td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+        </thead>
+      </table>
+    <% else %>
+      <p>There are no volunteers for this event.</p>
+    <% end %>
+  <% else %>
+    <p>You do not have permission to access this content.</p>
+    <br>
+    <p>
+      <%= link_to "Back", opportunity_path(@opportunity), class: "button" %>
+    </p>
+  <% end %>
+</div>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+  <div class="message" align="center">
+    <head>
+        <title>Message</title>
+    </head>
+
+    <body>
+
+        <!-- Message input -->
+        <h3>Send Mass Email</h3>
+
+        <section class="form">
+            <div class="input-group input-group-lg">
+                <%= text_area_tag :email_body, nil, rows: 22, cols: 75, placeholder: "Type your message here..." %>
+                <br>
+                <span class="input-group-btn">
+                    <%= submit_tag "Send",
+                    class: "btn btn-primary btn-lg",
+                    data: { confirm: 'Message sent!' } %>
+                </span>
+            </div>
+        </section>
+
+    </body>
+  </div>
+</html>

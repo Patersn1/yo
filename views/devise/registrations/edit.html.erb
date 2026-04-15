@@ -1,0 +1,99 @@
+<!-- Project name: SERVD -->
+<!-- Description: application for organizating volunteers and community events -->
+<!-- Filename: edit.html.erb -->
+<!-- Description: form used for editing user profile -->
+<!-- Last modified on: 12/15 -->
+
+<!-- Edited to include year and major information -->
+
+<h2>Edit <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+      <%= f.label :major %><br />
+      <%= f.text_field :major, autofocus: true %>
+  </div>
+  
+  <div class="field">
+      <%= f.label :year %><br />
+      <%= f.text_field :year, autofocus: true %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="field">
+    <!-- changed user instructions to work around a bug that was already present -->
+    <%= f.label :password %> <i> (If you do not want to change it, enter current password in all password fields)</i><br/>
+    <%= f.password_field :password, autocomplete: "new-password"%>
+    <% if @minimum_password_length %>
+    <br>
+
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
+    <%= f.password_field :current_password, autocomplete: "current-password"%>
+  </div>
+  <br>
+  <!-- Added these fields which will appear if the user is not an admin, except name -->
+  <div class="field">
+    <%= f.label :name %><br/>
+    <%= f.text_field :name, autocomplete: "N/A" %>
+  </div>
+  <% if !@user.admin? %>
+  <div class="field">
+    <%= f.label :school %><br/>
+    <%= f.text_field :school, autocomplete: "N/A" %>
+  </div>
+  <div class="field">
+    <%= f.label :major %><br/>
+    <%= f.text_field :major, autocomplete: "N/A" %>
+  </div>
+  <div class="field">
+    <%= f.label :academic_year %><br/>
+    <%= f.text_field :academic_year, autocomplete: "N/A" %>
+  </div>
+  <div class="field">
+    <%= f.label :interest %><br/>
+    <%= f.text_field :interest, autocomplete: "N/A" %>
+  </div>
+  <% end %>
+  <br>
+
+  <div class="field">
+    <%= f.label :notification_period %> <i>(How many days before a favorited event would you like to be notified?)</i><br/>
+    <%= f.number_field :notification_period, value: @user.notification_period, in: 1..31%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Update" %>
+  </div>
+<% end %>
+
+<br>
+<h3>Cancel my account</h3>
+
+<h4>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete %></h4>
+
+<%= link_to "Back", :back %>

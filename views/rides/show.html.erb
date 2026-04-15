@@ -1,0 +1,51 @@
+<%# # Project name: Servd Rideshare
+# Description: Users will be able to either offer their car for a ride or sign up for an open seat in a ride being 
+#              offered through this feature. Drivers can input which event they are driving to and how many seats 
+#              they have available while riders can request a specific car to ride in. Drivers also have the ability 
+#              to approve or deny anyone a ride and can update who is specifically riding in their car. 
+# Filename: show.html.erb
+# Description: This page is displayed after a ride has been created, shows all the updates that have been made based 
+#              on either if a ride has been created, someone requested a ride or if a ride has been approved
+# Last modified on: Nov. 10, 2021 %>
+
+<p id="notice" style="text-align:center"><%= notice %></p>
+
+<p style="text-align:center">
+  <strong>Driver name:</strong>
+  <%= @ride.driver_name %>
+</p>
+
+<p style="text-align:center">
+  <strong>Opportuniy:</strong>
+  <%= @ride.opportuniy_id %>
+</p>
+
+<p style="text-align:center">
+  <strong>Total seats:</strong>
+  <%= @ride.total_seats %>
+</p>
+
+<p style="text-align:center">
+  <strong>Rider1:</strong>
+  <%= @ride.rider1 %>
+</p>
+
+<p style="text-align:center">
+  <strong>Rider2:</strong>
+  <%= @ride.rider2 %>
+</p>
+
+<p style="text-align:center">
+  <strong>Rider3:</strong>
+  <%= @ride.rider3 %>
+</p>
+
+<p style="text-align:center">
+  <strong>Rider4:</strong>
+  <%= @ride.rider4 %>
+</p>
+
+<p style="text-align:center">
+  <%= link_to 'Edit', edit_ride_path(@ride) %> |
+  <%= link_to 'Back', rides_path %>
+</p>

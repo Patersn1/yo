@@ -1,0 +1,64 @@
+<!-- Project name: SERVD -->
+<!-- Description: application for organizating volunteers and community events -->
+<!-- Filename: profile_page.html.erb -->
+<!-- Description: displays profile page -->
+<!-- Last modified on: 12/15 -->
+
+<!-- This is the view page responsible for the profile page.-->
+<!-- This is the view page responsible for the profile page. -->
+<!-- It includes a table with the user information and two links: -->
+<!-- 1. Manage Optional Information -->
+<!-- 2. Search for Students to Collaborate With -->
+<!DOCTYPE html>
+<html>
+    <body>
+        <!-- Title for the page -->
+        <div class="container">
+            <h2>Profile Page</h2>
+        </div>
+
+        <!-- Table containing user information-->
+        <table align="center">
+            <thead>
+                <tr>
+                    <th>Name:</th>
+                    <td><%= @user.name %></td>
+                </tr>
+                <tr>
+                    <th>Email:</th>
+                    <td><%= @user.email %></td>
+                </tr>
+                <!-- added columns to show on the table if the user is not an admin -->
+                <% if !@user.admin? %>
+                <tr>
+                    <th>School:</th>
+                    <td><%= @user.school %></td>
+                </tr>
+                <tr>
+                    <th>Major:</th>
+                    <td><%= @user.major %></td>
+                </tr>
+                <tr>
+                    <th>Academic Year:</th>
+
+                    <td><%= @user.year %></td>
+
+                </tr>
+                <tr>
+                    <th>Area of Interest:</th>
+                    <td><%= @user.interest %></td>
+                </tr>
+                <% end %>
+            </thead>
+        </table>
+        
+        <!-- The two aforementioned functions -->
+        <!-- FIXME: create links -->
+        <div class="container">
+            <br><br><br><br>
+            <h4><%= link_to "Manage Optional Information", edit_student_path %></h4>
+            <br><br><br><br>
+            <h3>Search for Students to Collaborate With</h3>
+        </div>
+    </body>
+</html>

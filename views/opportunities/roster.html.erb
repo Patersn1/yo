@@ -1,0 +1,58 @@
+<h2 style="text-align:center"><%= @opportunity_name%> - Favorites</h2>
+
+<br>
+
+<% if @roster.empty? %>
+  <div class="opportunities" align="center">
+    <p class="container">
+      <h1>Nobody has favorited this event at this time.</h1>
+    </p>
+  </div>
+<% else %>
+  <table align="center">
+    <thead>
+      <tr>
+        <th>Name:</th>
+        <th>Email:</th>
+        <th>School:</th>
+        <th>Major:</th>
+        <th>Academic Year:</th>
+        <th>Area of Interest:</th>
+        <th>Transportation Status:</th>
+      </tr>
+      <% @roster.each do |user| %>
+        <tr>
+          <td><%= "N/A" %></td>
+          <td><%= user.email %></td>
+
+          <td><%= "N/A" %></td>
+          <td><%= "N/A" %></td>
+          <td><%= "N/A" %></td>
+          <%# Was not able to get to the transportation status aspect of the rideshare feature, it would essentially let riders know if 
+          they have been approved for the ride they chose or deinied by iether saying "pending" or "(driver's name)'s car" %>
+          <td><%= user.transportation_status %></td>
+
+          <td><%= user.name %></td>
+          <td><%= user.school %></td>
+          <td><%= user.major %></td>
+          <td><%= user.academic_year %></td>
+          <td><%= user.interest %></td>
+
+        </tr>
+      <% end %>
+    </thead>
+  </table>
+<% end %>
+
+<br>
+
+<%# adds links to go to rides page %>
+<%# DESIGN DECISION: links to rides page are here to encourage ridesharing as soon as the user signs up for an event %>
+<div style="text-align: center;">
+  <div class="styledButton"> 
+    <!-- <%= link_to "View Rides" , rides_path %>  -->
+  </div>
+  <div class="styledButton">
+    <%= link_to 'Back', @opportunity %>
+  </div>
+</div>

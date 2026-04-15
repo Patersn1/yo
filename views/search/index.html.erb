@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+  <div class="volunteers" align="center">
+    <head>
+        <title>Volunteers</title>
+    </head>
+    
+    <%= if current_user.admin? == false then
+      controller.redirect_to root_path
+    end %>
+
+    <body>
+      <!-- The volunteer search box -->
+      <h3>Search Volunteers</h3>
+      <section class="search-form">
+        <%= form_for :users, method: :get do |f| %>
+          <div class="input-group input-group-lg">
+            <!-- Search box where keywords are typed -->
+            <%= label_tag :keywords, nil, class: "sr-only" %>
+            <%= text_field_tag :keywords, nil,
+            placeholder: "Volunteer name",
+            class: "form-control input-lg" %>
+            <span class="input-group-btn">
+              <%= submit_tag "Find Volunteers",
+              class: "btn btn-primary btn-lg" %>
+            </span>
+            <br>
+            <p>
+              <!-- Filters for year and major -->
+              Graduation Year <%= select_tag :year, options_for_select(@years), selected: :year, include_blank: true %>
+              Major <%= select_tag :major, options_for_select(@majors), selected: :major, include_blank: true %>
+            </p>
+            <br>
+          </div>
+        <% end %>
+      </section>
+
+      <button><%= link_to "Mass Email", message_path(:volunteers => @volunteers) %></button>
+
+      <br>
+
+      <!-- Search results -->
+      <section class="search-results">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Major</th>
+              <th>Year</th>
+              <th>Email</th>
+            </tr>
+          </thead>
+            <tbody>
+              <!-- For each volunteer taken from database display name, major, year, and email -->
+              <% @volunteers.each do |volunteer| %>
+                <tr>
+                  <td><%= volunteer.name %></td>
+                  <td><%= volunteer.major %></td>
+                  <td><%= volunteer.year %></td>
+                  <td><%= volunteer.email %></td>
+                </tr>
+              <% end %>
+            </tbody>
+        </table>
+      </section>
+    </body>
+  </div>
+</html>

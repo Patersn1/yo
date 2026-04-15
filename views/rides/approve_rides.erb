@@ -1,0 +1,71 @@
+<%# # Project name: Servd Rideshare
+# Description: Users will be able to either offer their car for a ride or sign up for an open seat in a ride being 
+#              offered through this feature. Drivers can input which event they are driving too and how many seats 
+#              they have available while riders can reuqest a specific car to ride in. Drivers also have the ability 
+#              to approve or deny anyone a ride and can updtae who is specifally riding in their car. 
+# Filename: approve_rides.erb
+# Description: This is a page seperate from the regular forms page where the drivers can approve or deny anyone who has requested a ride.
+#              Drivers can do this by removing the email of a rider within the form provided and they will be removed from that table 
+#              in the datbase. Ideally this would only be accessible by the driver of the car but currently everyone has access to this 
+#              page if they click the link "approve rides".
+# Last modified on: Nov. 10, 2021 %>
+
+<%= ride = Ride.find(params[:id])%>
+<h3>Approve Rides</h3>
+<p style="text-align:center"> <strong>Directions: </strong>Remove anyone you are not comfortable or do not approve of driving by deleting them in the textbox below.</p>
+<%= form_with(model: ride, local: true) do |form| %>
+  <% if ride.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ride.errors.count, "error") %> prohibited this ride from being saved:</h2>
+
+      <ul>
+        <% ride.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%# FUNCTIONALITY: Text fields with all of the names of the people who have requested a ride are displayed. 
+                   The user can remove them by erasing them from the textbox or approve the rides by clicking the update 
+                   button at the bottom of the form.  %>
+
+  <%# DESIGN DECISION: Only the riders are displayed because that is the main goal of this page. User's shouldn't be able 
+                       to edit the driver, opportunity or how many seats are avaiable here, only who is and isn't approved 
+                       to ride in the car.  %>
+  <div class="field" style="text-align:center">
+    <%= form.label :opportuniy_id %>
+    <%= form.text_field :opportuniy_id %>
+  </div>
+
+  <div class="field" style="text-align:center">
+    <%= form.label :total_seats %>
+    <%= form.number_field :total_seats %>
+  </div>
+
+  <div class="field" style="text-align:center">
+    <%= form.label :rider1 %>
+    <%= form.text_field :rider1 %>
+  </div>
+
+  <div class="field" style="text-align:center">
+    <%= form.label :rider2 %>
+    <%= form.text_field :rider2 %>
+  </div>
+
+   <div class="field" style="text-align:center">
+    <%= form.label :rider3 %>
+    <%= form.text_field :rider3 %>
+  </div>
+
+   <div class="field" style="text-align:center">
+    <%= form.label :rider4 %>
+    <%= form.text_field :rider4 %>
+  </div>
+
+  <div class="actions" style="text-align:center">
+    <%= form.submit %>
+  </div>
+
+  <p style="text-align:center"><%= link_to 'Back', rides_path %> </p>
+<% end %>

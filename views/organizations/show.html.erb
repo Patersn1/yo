@@ -1,0 +1,64 @@
+<h1 align="center"><%= @organization.name %></h1>
+<div class="container" align="center">
+  <% if !flash[:notice].blank? %>
+    <div>
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+  <table align="center">
+    <tbody>
+    <tr>
+      <td><strong>Email:</strong>
+        <%= @organization.email %></td>
+      <td><strong>Phone no:</strong>
+        <%= @organization.phone_no %></td>
+    </tr>
+    <tr>
+      <td class="location-tab"><strong>Address:</strong>
+        <%= @organization.address %></td>
+      <td class="location-tab">
+        <strong>City:</strong>
+        <%= @organization.city %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>State:</strong>
+        <%= @organization.state %>
+      </td>
+      <td>
+        <strong>Zip code:</strong>
+        <%= @organization.zip_code %>
+      </td>
+    </tr>
+    <tr>
+      <td
+        ++v >
+        <strong>Issue Area:</strong>
+        <%= @organization.issue_area %>
+      </td>
+      <td>
+        <strong>Approved:</strong>
+        <%= @organization.approved %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <strong>Description:</strong>
+        <%= @organization.description %>
+      </td>
+    </tr>
+    <td colspan="3">
+      <%= @organization.photo %>
+    </td>
+    </tr>
+    </tbody>
+  </table>
+  <br>
+  <br>
+  <% if session[:user_email] == @organization.email || session[:user_type] == 0 %>
+    <%= link_to 'Edit', edit_organization_path(@organization) %> |
+  <% end %>
+
+  <%= link_to 'Back', :back %>
+</div>

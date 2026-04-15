@@ -1,0 +1,29 @@
+<!-- Project name: SERVD -->
+<!-- Description: application for organizating volunteers and community events -->
+<!-- Filename: edit.html.erb -->
+<!-- Description: form used for editting opportunities -->
+<!-- Last modified on: 11/09 -->
+
+<!-- deleted extra back button -->
+
+<h1>Editing Opportunity</h1>
+<div style="text-align: center;">
+  <div style="display: inline-block; text-align: left;">
+    <% if current_user.organization == @opportunity.organization || current_user.admin? %>
+      <%= render 'form', opportunity: @opportunity %>
+
+      <!-- <div class= "container-butt">
+		    <a class= "new-butt" <%= link_to 'New Event', new_opportunity_path, :class => "" %></a>
+		  </div> -->
+    <% else %>
+      <h1>You must be lost. You don't have access to this page.</h1>
+
+      <div class="styledButton">
+        <%= link_to 'Back', :back %>
+      </div>
+    <% end %>
+
+    <br>
+
+  </div>
+</div>

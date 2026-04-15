@@ -1,0 +1,80 @@
+<!-- Project name: SERVD -->
+<!-- Description: application for organizating volunteers and community events -->
+<!-- Filename: new.html.erb -->
+<!-- Description: form used for creating a new user profile -->
+<!-- Last modified on: 12/15 -->
+
+<center>
+<!-- Edited to include year and major information -->
+
+<h2>Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+  <p> Enter the Username and Password you would like to use </p>
+
+  <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true %>
+  </div>
+
+  <div class="field">
+      <%= f.label :major %><br />
+      <%= f.text_field :major, autofocus: true %>
+  </div>
+
+  <div class="field">
+      <%= f.label :year %><br />
+      <%= f.text_field :year, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <!-- Added these fields so a user can supply this information at sign up -->
+  <p> Tell us a little bit about yourself </p>
+  <div class="field">
+    <%= f.label :name %><br/>
+    <%= f.text_field :name, autocomplete: "N/A" %>
+  </div>
+  <div class="field">
+    <%= f.label :school %><br/>
+    <%= f.text_field :school, autocomplete: "N/A" %>
+  </div>
+  <div class="field">
+    <%= f.label :major %><br/>
+    <%= f.text_field :major, autocomplete: "N/A" %>
+  </div>
+  <div class="field">
+    <%= f.label :academic_year %><br/>
+    <%= f.text_field :academic_year, autocomplete: "N/A" %>
+  </div>
+  <div class="field">
+    <%= f.label :interest %><br/>
+    <%= f.text_field :interest, autocomplete: "N/A" %>
+  </div>
+
+  <br>
+
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>

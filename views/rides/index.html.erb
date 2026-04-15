@@ -1,0 +1,72 @@
+<%# # Project name: Servd Rideshare
+# Description: Users will be able to either offer their car for a ride or sign up for an open seat in a ride being 
+#              offered through this feature. Drivers can input which event they are driving too and how many seats 
+#              they have available while riders can reuqest a specific car to ride in. Drivers also have the ability 
+#              to approve or deny anyone a ride and can updtae who is specifally riding in their car. 
+# Filename: index.html.erb
+# Description: This is page displays all of the rides which have been created along with allowing users to add a new ride to the table.
+#              It is set up to show the driver's email, which opportunity the ride is for and who are already signed up for a ride. It 
+#              also displays a set of links for each ride in the table for riders to request rides and drivers to approve riders or 
+#              delete their car from the table if they are no longer able to provide a ride to the event
+# Last modified on: Nov. 10, 2021 %>
+<p id="notice"><%= notice %></p>
+
+<%# FUNCTIONALITY: Table displays all relevant information for each ride and provides links for users to add a new car, request 
+#                  a ride, approve rides and delete rides.  %>
+<h1 style="margin:2rem">Rides</h1>
+
+<%# Input box and button used to query the rides table in the database %>
+<div style="margin:2rem">
+  <%= form_for :rides, method: :get do |f| %>
+      <div class="input-group inpur-group-lg">
+        <%= text_field_tag :keywords, nil, placeholder: "Search for a Driver or Event Name", style: "width:24rem; height:2rem;"%> 
+        <%= submit_tag "Search",  style: "width:5rem; height:2rem; margin:0rem"%> 
+      </div>
+      <p>Note: Results will only display exact spelling so double check to make sure everything is spelled correctly.</p>
+  <% end %>
+</div>
+
+
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Driver name</th>
+      <th>Opportuniy</th>
+      <th>Total seats</th>
+      <th>Rider1</th>
+      <th>Rider2</th>
+      <th>Rider3</th>
+      <th>Rider4</th>
+      <%# DESIGN DECISION: Added two seperate colums in the table to better direct users where to go depending on if they're 
+      #   driving or need to request a ride.  %>
+      <th>Rider's Actions</th>
+      <th>Driver's Actions</th>
+      
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rides.each do |ride| %>
+      <tr>
+        <td><%= ride.driver_name %></td>
+        <td><%= ride.opportuniy_id %></td>
+        <td><%= ride.total_seats %></td>
+        <td><%= ride.rider1 %></td>
+        <td><%= ride.rider2 %></td>
+        <td><%= ride.rider3 %></td>
+        <td><%= ride.rider4 %></td>
+        <td><%= link_to 'Request Ride',  edit_ride_path(ride)%></td>
+        <td><%= link_to 'Approve Rides', approveride_path(ride)%>
+        <br><%= link_to 'Remove Car', ride, method: :delete, data: { confirm: 'Are you sure?' } %></td> 
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= link_to 'Clear Search Results', rides_path %>
+<br>
+<%= link_to 'Add New Ride', new_ride_path(:newRide => true) %>
+

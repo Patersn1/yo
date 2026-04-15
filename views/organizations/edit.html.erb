@@ -1,0 +1,16 @@
+<h1>Editing Organization</h1>
+<div style="text-align: center;">
+  <div style="display: inline-block; text-align: left;">
+    <% if current_user.organization == @organization || current_user.admin? %>
+      <%= render 'form', organization: @organization %>
+    <% else %>
+      <h1>You seem lost. You don't have access to this page</h1>
+    <% end %>
+
+    <br>
+
+    <div class="styledButton">
+      <%= link_to 'Back', :back %>
+    </div>
+  </div>
+</div>

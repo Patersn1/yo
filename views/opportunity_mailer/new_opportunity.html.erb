@@ -1,0 +1,84 @@
+<h1 align="center">Hello <%= @user %></h1>
+<h2 align="center"><%= @opportunity.organization.name %> just posted a new event!</h2>
+
+<br>
+
+<h1 align="center"><%= @opportunity.name %></strong></h1>
+<table align="center">
+  <tbody>
+    <tr>
+      <td colspan="3">
+        <strong>Organization:</strong>
+        <%= @opportunity.organization.name %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <strong>Date:</strong>
+        <span style="white-space: nowrap;"><%= @opportunity.on_date.strftime('%B %-d, %Y') %></span>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Start Time:</strong>
+        <%= @opportunity.start_time.strftime('%I:%M %p') %>
+      </td>
+      <td>
+        <strong>End Time:</strong>
+        <%= @opportunity.end_time.strftime('%I:%M %p') %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Address:</strong>
+        <%= @opportunity.address %>
+      </td>
+      <td>
+        <strong>City:</strong>
+        <%= @opportunity.city %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>State:</strong>
+        <%= @opportunity.state %>
+      </td>
+      <td>
+        <strong>Zip code:</strong>
+        <%= @opportunity.zip_code %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <strong>Transportation from TCNJ:</strong>
+        <%= @opportunity.transportation ? 'Provided' : 'Not provided' %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Issue Area:</strong>
+        <%= @opportunity.issue_area unless @opportunity.issue_area.nil? %>
+      </td>
+      <td>
+        <strong>Frequency:</strong>
+        <%= @opportunity.frequency %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Primary Tag:</strong>
+        <%= @opportunity.primary_tag_id %>
+      </td>
+      <td>
+        <strong>Secondary Tag:</strong>
+        <%= @opportunity.secondary_tag_id %>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+        <strong>Description:</strong>
+        <%= @opportunity.description %>
+      </td>
+    </tr>
+  </tbody>
+</table>

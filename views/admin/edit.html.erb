@@ -1,0 +1,21 @@
+<h2>Update Roles for <%= @user.email %></h2>
+
+<%= form_with(model: [:admin, @user], local: true) do |form| %>
+  <div class="roles-container">
+    <p><strong>Select roles to assign:</strong></p>
+    
+    <% Role.all.each do |role| %>
+      <div class="role-checkbox">
+        <%= check_box_tag "user[role_ids][]", role.id, @user.roles.include?(role), id: "role_#{role.id}" %>
+        <%= label_tag "role_#{role.id}", role.name %>
+        <small>(<%= role.description %>)</small>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="actions" style="margin-top: 15px;">
+    <%= form.submit "Update User Roles" %>
+  </div>
+<% end %>
+
+<%= link_to "Back to User List", admin_users_path %>
