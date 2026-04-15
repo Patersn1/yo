@@ -1,0 +1,64 @@
+// Place all the styles related to the Opportunities controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+// text-align: center;
+}
+
+.volunteer__form {
+  display: block;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.volunteer__do {
+  min-width: 140px;
+  min-height: 40px;
+  text-align: center;
+  color: white;
+  outline: none;
+  border-radius: 10px;
+  border-style: none;
+  padding: 16px;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+
+.volunteer__do--primary {
+  background-color: rgba(4, 102, 140, 1);
+}
+
+.volunteer__do--danger {
+  background-color: rgb(213, 64, 68);
+}
+
+#main_content {
+  padding: 6px;
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.visible_button_links > div > a {
+  width: 100%;
+  min-width: 200px;
+  padding: 6px 10px;
+  display: block;
+  background-color: rgb(46, 125, 156);
+  color: white;
+  text-decoration: none;
+}
+
+.visible_button_links > div > a:hover {
+  background-color: rgb(22, 77, 98);
+  color: white;
+}
+
+.visible_button_links > div:not(:last-child) {
+  margin-bottom: 4px;
+}
+
+.email_button {
+  min-width: 140px;
+  background-color: #005bf8;
+}

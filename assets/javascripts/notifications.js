@@ -1,0 +1,1 @@
+// Placeholder JS (formerly notifications.coffee) – add notifications related JS here.

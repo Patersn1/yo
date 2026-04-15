@@ -1,0 +1,1 @@
+// Placeholder JS (formerly organizations.coffee) – add organizations related JS here.

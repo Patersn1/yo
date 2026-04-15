@@ -1,0 +1,50 @@
+// Place all the styles related to the approval controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+
+    width: 100%;
+  }
+  
+  .myTable{
+    margin-bottom: 2rem;
+  }
+
+  .myTable2{
+    margin-bottom: 5rem;
+  }
+
+  td, th {
+    border: 1px solid grey;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #dddddd;
+  }
+
+  h1{
+    text-indent:40px
+  }
+
+  h2{
+    text-align:center;
+  }
+
+  h3{
+    text-align:center;
+  }
+
+  .button {
+      text-align:center;
+      background-color: #5dbcd2;
+      color: white;
+      padding: 1em 1.5em;
+      text-decoration: none;
+      text-transform: uppercase;
+   
+  }

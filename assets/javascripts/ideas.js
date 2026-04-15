@@ -1,0 +1,1 @@
+// Placeholder JS (formerly ideas.coffee) – add page-specific JS here if needed.

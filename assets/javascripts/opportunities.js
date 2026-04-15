@@ -1,0 +1,1 @@
+// Placeholder JS (formerly opportunities.coffee) – add opportunities related JS here.

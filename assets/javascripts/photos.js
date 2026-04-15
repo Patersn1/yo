@@ -1,0 +1,1 @@
+// Placeholder JS (formerly photos.coffee) – add photos related JS here.
